@@ -1,4 +1,3 @@
-// var path = require('path');
 var gulp = require('gulp');
 var livereload = require('gulp-livereload');
 var childProcess = require('child_process');
@@ -38,7 +37,9 @@ gulp.task('compile', [], function () {
 gulp.task('default', ['livereload', 'compile'], function () {
     //增加了ts文件之后要重新开启gulp任务
     //每次开启gulp任务的时候都要更新下html
+    var t1 = new Date().getTime();
     var FileHtmlHandler = require('./FileHtmlHandler');
     FileHtmlHandler.htmlHandlerScript();
-    console.log('default');
+    var t2 = new Date().getTime();
+    console.log(`htmlHandlerScript end within ${t2 - t1} ms`);
 });
