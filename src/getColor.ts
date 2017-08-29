@@ -1,0 +1,1 @@
+export const getColor = () => '#ff0000';
