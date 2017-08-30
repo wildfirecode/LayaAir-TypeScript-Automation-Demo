@@ -1,6 +1,6 @@
 # 自动化的基于TypeScript的HTML5游戏开发
 ## 自动化的开发流程
-在HTML5游戏开发或者说在Web客户端开发中，我们对项目代码进行修改之后，一般来说，需要手动刷新浏览器来查看代码修改后运行结果。这种手动的方式费时费力，降低了开发效率。另外，如果我们使用了如TypeScript这类需要通过转换器把代码转换成浏览器可识别的JavaScript代码的语言，在运行程序之前，我们还需要进行额外的转换的过程。为了解决这两个问题，本文介绍了如何通过使用TypeScript Compiler(tsc)的watch模式来实现代码修改后自动编译以及使用gulp-connect来实现编译后浏览器自动刷新。
+在HTML5游戏开发或者说在Web客户端开发中，对项目代码进行修改之后，一般来说，需要手动刷新浏览器来查看代码修改后运行结果。这种手动的方式费时费力，降低了开发效率。另外，如果我们使用了如TypeScript这类需要通过转换器把代码转换成浏览器可识别的JavaScript代码的语言，在运行程序之前，我们还需要进行额外的手动转换，这同样是影响开发效率的一个因素。为了解决这两个问题，本文介绍了如何通过使用TypeScript Compiler(tsc)的watch模式来实现代码修改后自动编译以及使用gulp-connect来实现编译后浏览器自动刷新。
 
 ## 开发环境
 - Visual Studo Code 1.15
@@ -82,7 +82,7 @@ gulp.task('default', ['connect', 'watch', 'compile']);
 
 接着，我们可以按下`F5`，并选择`chrome`来自动生成调试配置`launch.json`，此文件位于`.vscode`文件夹。
 
-下面，按下`F1`，并输入`Configure Default Build Task`来快速找到`配置默认生成任务`选项，选择之后弹出`任务列表`，在列表中选中`gulp:default`之后，`task.json`文件会自动生成，并置于`.vscode`文件夹。`task.json`使得我们可以把gulp:default作为默认的构建任务。
+下面，按下`F1`，并输入`Configure Default Build Task`来快速找到`配置默认生成任务`选项，选择之后弹出`任务列表`，在列表中选中`gulp:default`之后，`task.json`文件会自动生成，并置于`.vscode`文件夹。`task.json`使得我们可以把`gulp:default`作为默认的构建任务。
 
 至此，所有的配置和编程处理完毕。
 
@@ -94,10 +94,11 @@ gulp.task('default', ['connect', 'watch', 'compile']);
 
 接下来，我们可以在浏览器中输入`http://localhost:8080`来运行游戏。
 
-然后修改`Greeting.ts`文件，把`Hello LayaAir`修改为`Hello HTML5 Game.`，保存文件之后，便会发现游戏中的显示文本修改为`Hello HTML5 Game.`. 具体请看下面的动图。
+然后修改示例中的`Greeting.ts`文件，把`Hello LayaAir`修改为`Hello HTML5 Game.`，保存文件之后，便会发现游戏中的显示文本修改为`Hello HTML5 Game.`. 具体请看下面的动图。
+![](http://images2017.cnblogs.com/blog/1178277/201708/1178277-20170830123833640-435399890.gif)
 如有其他的配置疑问，请参考示例项目的源码。
 
-参考
+## 参考
 - [nodejs官网][nodejs]
 - [gulp中文网][gulp]
 - [gulp-connect官网][connect]
