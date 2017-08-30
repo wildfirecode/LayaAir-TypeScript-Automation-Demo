@@ -1,5 +1,6 @@
 const gulp = require('gulp'),
-    connect = require('gulp-connect');
+    connect = require('gulp-connect'),
+    os = require("os");
 
 gulp.task('connect', () =>
     connect.server({
@@ -8,9 +9,10 @@ gulp.task('connect', () =>
     })
 );
 
-gulp.task('tsc', () => {
+gulp.task('compile', () => {
+    const cmd = os.platform() == 'win32' ? 'tsc.cmd' : 'tsc';
     const childProcess = require('child_process');
-    const child = childProcess.spawn('tsc.cmd', []);
+    const child = childProcess.spawn(cmd, []);
     child.stdout.on('data', function (chunk) {
         console.log('[tsc]', chunk + '');
     });
@@ -29,7 +31,7 @@ gulp.task('reload', () => {
 });
 
 gulp.task('watch', () => {
-    gulp.watch(['./bin/js/*.js', './bin/*.html'], ['reload']);
+    gulp.watch(['./bin/js/*.js'], ['reload']);
 });
 
-gulp.task('default', ['connect', 'watch', 'tsc']);
+gulp.task('default', ['connect', 'watch', 'compile']);

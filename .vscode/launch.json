@@ -7,7 +7,7 @@
             "name": "Launch Chrome against localhost",
             "url": "http://localhost:8080",
             "webRoot": "${workspaceRoot}",
-            "userDataDir": "./vscode/userData"
+            "userDataDir": "./.vscode/userdata"
         },
         {
             "type": "chrome",
